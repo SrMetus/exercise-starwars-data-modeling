@@ -41,25 +41,21 @@ class Location(Base):
     Name = Column(String(50), nullable=False)
     characterID = Column(Integer, ForeignKey('character.CharacterID'))
 
+class Person(Base):
+    __tablename__ = 'person'
 
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
 
-# class Person(Base):
-#     __tablename__ = 'person'
-#     # Here we define columns for the table person
-#     # Notice that each column is also a normal Python instance attribute.
-#     id = Column(Integer, primary_key=True)
-#     name = Column(String(250), nullable=False)
+class Address(Base):
+    __tablename__ = 'address'
 
-# class Address(Base):
-#     __tablename__ = 'address'
-#     # Here we define columns for the table address.
-#     # Notice that each column is also a normal Python instance attribute.
-#     id = Column(Integer, primary_key=True)
-#     street_name = Column(String(250))
-#     street_number = Column(String(250))
-#     post_code = Column(String(250), nullable=False)
-#     person_id = Column(Integer, ForeignKey('person.id'))
-#     person = relationship(Person)
+    id = Column(Integer, primary_key=True)
+    street_name = Column(String(250))
+    street_number = Column(String(250))
+    post_code = Column(String(250), nullable=False)
+    person_id = Column(Integer, ForeignKey('person.id'))
+    person = relationship(Person)
 
 #     def to_dict(self):
 #         return {}
